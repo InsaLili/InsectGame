@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" media="screen" href="stylesheets/player.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" media="screen" href="stylesheets/bootstrap.min.css">-->
+    <link rel="stylesheet" media="screen" href="stylesheets/star-rating.min.css">
+    <title>Player2</title>
+</head>
+<body>
+<div id="locationInfo" class="col-xs-6">
+    <div id="locationNum">
+        <h5>Data of location :  <span id="dataLocation">?</span></h5>
+    </div>
+    <div id="locationDetail">
+        <div class="infoTable">
+            <p>PH</p>
+            <table id="locationPH" class="table table-bordered">
+                <tr>
+                    <th>Group 1</th>
+                    <th>Group 2</th>
+                    <th>Group 3</th>
+                    <th>Group 4</th>
+                    <th>Average</th>
+                </tr>
+                <tr>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="infoTable">
+            <p>Temperature</p>
+            <table id="locationTemperature" class="table table-bordered">
+                <tr>
+                    <th>Group 1</th>
+                    <th>Group 2</th>
+                    <th>Group 3</th>
+                    <th>Group 4</th>
+                    <th>Average</th>
+                </tr>
+                <tr>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="infoTable">
+            <p>Wind</p>
+            <table id="locationWind" class="table table-bordered">
+                <tr>
+                    <th>Group 1</th>
+                    <th>Group 2</th>
+                    <th>Group 3</th>
+                    <th>Group 4</th>
+                    <th>Average</th>
+                </tr>
+                <tr>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="infoTable">
+            <p>Light</p>
+            <table id="locationLight" class="table table-bordered">
+                <tr>
+                    <th>Group 1</th>
+                    <th>Group 2</th>
+                    <th>Group 3</th>
+                    <th>Group 4</th>
+                    <th>Average</th>
+                </tr>
+                <tr>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="infoTable">
+            <p>Humidity</p>
+            <table id="locationHumidity" class="table table-bordered">
+                <tr>
+                    <th>Group 1</th>
+                    <th>Group 2</th>
+                    <th>Group 3</th>
+                    <th>Group 4</th>
+                    <th>Average</th>
+                </tr>
+                <tr>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="insectInfo" class="col-xs-6">
+    <h5>Insect's information</h5>
+    <p>Here are the information of insect</p>
+</div>
+<div id="showNotes" class="col-xs-6">
+    <h5>Notes</h5>
+    <span id="note2"></span>
+</div>
+<div id="addNotes" class="col-xs-6">
+    <h5>Add my notes</h5>
+    <div id="myNote">
+        <textarea class="form-control" rows="2" cols="1"></textarea>
+        <button class="btn btn-default pull-right" id="submit">Submit</button>
+    </div>
+</div>
+<div id="vote" class="col-xs-6">
+    <h5>Vote for the location</h5>
+    <input id="input" class="rating" data-min="0" data-max="4" data-step="1" data-stars=4  data-show-clear="false" data-size="md">
+    <button class="btn btn-default pull-right" id="submitVote">Submit</button>
+</div>
+
+</body>
+<script src="javascripts/jquery-2.1.3.min.js"></script>
+<script src="javascripts/pouchdb-3.4.0.min.js"></script>
+<script src="javascripts/pouchdb.find.js"></script>
+<script src="javascripts/socket.io.js"></script>
+<script src="javascripts/player2.js"></script>
+<script src="javascripts/star-rating.min.js"></script>
+
+</html>

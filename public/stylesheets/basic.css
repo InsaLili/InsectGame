@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+#menu{
+    /*width: 30%;*/
+    height: 100%;
+    float: left;
+}
+#googleMap{
+    /*width: 70%;*/
+    height: 100%;
+    float: left;
+}
+.location{
+    float: left;
+    width: 100%;
+    height: 25%;
+    border-bottom: 1px solid;
+    position: relative;
+    padding: 5px;
+}
+.location span p {
+    float: left;
+    margin-right: 5px;
+    padding: 2px;
+    border: 1px solid;
+}
+.vote{
+    position: absolute;
+    bottom: 0px;
+    float: left;
+}
+.note{
+    float: left;
+}
+button{
+    background-color: #5bc0de;
+}

@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+h5{
+    text-align: center;
+}
+p, table{
+    font-size: 12px;
+}
+
+#locationInfo{
+    float: left;
+    height: 100%;
+    border-right: 1px solid;
+}
+#locationDetail{
+    width: 80%;
+    margin: auto;
+}
+#insectInfo{
+    float: left;
+    /*width: 50%;*/
+    height: 30%;
+    border-bottom: 1px solid;
+}
+#showNotes{
+    float: left;
+    /*width: 50%;*/
+    height: 25%;
+    border-bottom: 1px solid;
+}
+.noteOfPlayer{
+    float: left;
+    /*border: 1px solid;*/
+    margin-left: 3%;
+}
+#addNotes{
+    float: left;
+    /*width: 50%;*/
+    height: 25%;
+    border-bottom: 1px solid;
+}
+
+#myNote{
+    width: 70%;
+    margin: auto;
+}
+
+#note1 p{
+    background-color: #fc8c84;
+    border: 1px solid;
+}
+
+#note2 p{
+    background-color: #f5e79e;
+    border: 1px solid;
+}
+
+#note3 p{
+    background-color: #c1e2b3;
+    border: 1px solid;
+}
+
+#vote{
+    float: left;
+    /*width: 50%;*/
+    height: 20%;
+    /*border: 1px solid;*/
+}
+
+#submitVote{
+    float: right;
+}
