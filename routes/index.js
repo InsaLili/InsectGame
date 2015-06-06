@@ -15,7 +15,7 @@ var group4 = [];
 var allData = [];
 //flag of how many groups update data
 var allGroupNum = 0;
-var db = new PouchDB('http://localhost:5984/locationlist');
+var db = new PouchDB('http://192.168.145.39:5984/locationlist');
 //var db = new PouchDB('http://192.168.145.35:5984/locationlist');
 
 /* GET home page. */

@@ -1,9 +1,9 @@
 /**
  * Created by Lili on 08/04/15.
  */
-var socket = io.connect('http://localhost:8000');
+var socket = io.connect('http://192.168.145.39:8000');
 //var socket = io.connect('http://192.168.145.35:8000');
-var db = new PouchDB('http://localhost:5984/locationlist');
+var db = new PouchDB('http://192.168.145.39:5984/locationlist');
 //var db = new PouchDB('http://192.168.145.35:5984/locationlist');
 
 var groupNumber = 0;
@@ -34,7 +34,7 @@ $(document).ready(function() {
         $('#insect4').dialog('open');
         $('#insectInfoWrap').touch();
     });
-//    $('.badges img').hide();
+   $('.badges img').hide();
 
 //------------------initialize progress bar;
     $( "#progressbar1" ).progressbar({
@@ -119,8 +119,8 @@ $(document).ready(function() {
     });
     $('#insect3').dialog({
         autoOpen: false,
-        width: 600,
-        height:400,
+        width: 700,
+        height: 500,
         buttons:{
             "OK": function(){
                 $(this).dialog("close");
@@ -184,17 +184,6 @@ $(document).ready(function() {
         }else{
             $('#secondStepDialog').dialog('open');
         }
-//        db.get('badge/'+groupNumber).then(function(doc){
-//            console.log('group'+groupNumber);
-//            console.log('timerBadge'+timerBadgeNum);
-//            console.log('noteBadge'+noteBadgeNumSum);
-//            return db.put({
-//                timer: timerBadgeNum,
-//                note1:noteBadgeNum[0],
-//                note2:noteBadgeNum[1],
-//                note3:noteBadgeNum[2]
-//            },'badge/'+groupNumber, doc.rev);
-//        });
 
         db.get('badge/'+groupNumber).then(function(doc) {
             console.log('group'+groupNumber);
@@ -341,11 +330,24 @@ function initMap(map) {
         "type": "Feature",
         "geometry": {
             "type": "Point",
+            "coordinates": locations[7]
+        },
+        "properties": {
+            "title": "<h4>Lycée N°4</h4>",
+            "content": message[4],
+            "marker-symbol": "chemist",
+            "marker-color": "#E91E63",
+            "marker-size": "large"
+        }
+    },{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
             "coordinates": locations[4]
         },
         "properties": {
             "title": "<h4>Lycée N°1</h4>",
-            "content": message[4],
+            "content": message[5],
             "marker-symbol": "chemist",
             "marker-color": "#E91E63",
             "marker-size": "large"
@@ -358,7 +360,7 @@ function initMap(map) {
         },
         "properties": {
             "title": "<h4>Lycée N°2</h4>",
-            "content": message[5],
+            "content": message[6],
             "marker-symbol": "chemist",
             "marker-color": "#E91E63",
             "marker-size": "large"
@@ -371,19 +373,6 @@ function initMap(map) {
         },
         "properties": {
             "title": "<h4>Lycée N°3</h4>",
-            "content": message[6],
-            "marker-symbol": "chemist",
-            "marker-color": "#E91E63",
-            "marker-size": "large"
-        }
-    },{
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": locations[7]
-        },
-        "properties": {
-            "title": "<h4>Lycée N°4</h4>",
             "content": message[7],
             "marker-symbol": "chemist",
             "marker-color": "#E91E63",

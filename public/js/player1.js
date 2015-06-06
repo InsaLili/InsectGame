@@ -3,9 +3,9 @@ var locationNumber;
 var groupNumber = 0;
 var playerNumber = 1;
 var allNotes = 0;
-var db = new PouchDB('http://localhost:5984/locationlist');
+var db = new PouchDB('http://192.168.145.39:5984/locationlist');
 //var db = new PouchDB('http://192.168.145.35:5984/locationlist');
-var socket = io.connect('http://localhost:8000');
+var socket = io.connect('http://192.168.145.39:8000');
 //var socket = io.connect('http://192.168.145.35:8000');
 
 // DOM Ready =============================================================
@@ -74,7 +74,6 @@ $(document).ready(function($){
 // Functions =============================================================
 // count the number of notes
 function getNoteNumber(){
-    allNotes = 0;
     var startKey = 'note_'+groupNumber;
     db.allDocs({
         include_docs: true,
@@ -109,16 +108,16 @@ function showInfoOnTable(){
             locationName = "La clairière";
             break;
         case 5:
-            locationName = "Lycée N°1";
+            locationName = "Lycée N°4";
             break;
         case 6:
-            locationName = "Lycée N°2";
+            locationName = "Lycée N°1";
             break;
         case 7:
-            locationName = "Lycée N°3";
+            locationName = "Lycée N°2";
             break;
         case 8:
-            locationName = "Lycée N°4";
+            locationName = "Lycée N°3";
             break;
     }
     $('#dataLocation').text(locationName);

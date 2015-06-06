@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 // Database
 var PouchDB = require('pouchdb');
-var db = new PouchDB('http://localhost:5984/locationlist');
+var db = new PouchDB('http://192.168.145.39:5984/locationlist');
 //var db = new PouchDB('http://192.168.145.35:5984/locationlist');
 
 var app = express();
@@ -120,6 +120,9 @@ io.on('connection', function (socket) {
     });
 });
 
-db.get('measure/4/6').then(function(doc){
-
+/*db.put({
+  _id: 'measure/5/1',
+  group: 5,
+  locaton: 1
 });
+*/
