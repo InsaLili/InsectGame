@@ -9,12 +9,12 @@ var bodyParser = require('body-parser');
 
 // Database
 var PouchDB = require('pouchdb');
-PouchDB.plugin(require('pouchdb-find'));
-var db = new PouchDB('http://127.0.0.1:5984/locationlist');
+var db = new PouchDB('http://localhost:5984/locationlist');
+//var db = new PouchDB('http://192.168.145.35:5984/locationlist');
 
 var app = express();
 var routes = require('./routes/index');
-var users = require('./routes/users');
+//var users = require('./routes/users');
 
 //set express environment
 app.engine('.html', require('ejs').__express);
@@ -34,7 +34,7 @@ app.use(function(req,res,next){
 });
 
 app.use('/', routes);
-app.use('/users', users);
+//app.use('/users', users);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -77,6 +77,10 @@ var io = require('socket.io')(httpserver);
 io.on('connection', function (socket) {
     socket.emit('news', {hello: 'world'});
 
+    socket.on('choosegroup', function(data){
+        console.log(data);
+        io.emit('choosegroup', data);
+    });
     // Start listening for mouse events
     socket.on('chooselocation', function (data) {
         console.log(data);
@@ -85,6 +89,10 @@ io.on('connection', function (socket) {
         io.emit('chooselocation', data);
     });
 
+    socket.on('confirmlocation', function(data){
+        console.log(data);
+       io.emit('confirmlocation',data);
+    });
     socket.on('notes', function(data){
         console.log(data);
         io.emit('notes', data);
@@ -93,8 +101,17 @@ io.on('connection', function (socket) {
     socket.on('addnote', function(data){
         io.emit('addnote', data);
     });
+    socket.on('addagu', function(data){
+        console.log(data);
+        io.emit('addagu', data);
+    });
     socket.on('deletenote', function(data){
         io.emit('deletenote', data);
+    });
+    socket.on('deleteagu', function(data){
+        console.log("deleteAgu");
+        console.log(data);
+        io.emit('deleteagu', data);
     });
 
     socket.on('vote', function(data){
@@ -103,4 +120,6 @@ io.on('connection', function (socket) {
     });
 });
 
-//exports.db = db;
+db.get('measure/4/6').then(function(doc){
+
+});
