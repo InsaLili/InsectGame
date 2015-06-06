@@ -3,10 +3,9 @@ var locationNumber;
 var groupNumber = 0;
 var playerNumber = 1;
 var allNotes = 0;
-var db = new PouchDB('http://192.168.145.39:5984/locationlist');
-//var db = new PouchDB('http://192.168.145.35:5984/locationlist');
-var socket = io.connect('http://192.168.145.39:8000');
-//var socket = io.connect('http://192.168.145.35:8000');
+var db = new PouchDB('http://localhost:5984/locationlist');
+// var socket = io.connect('http://192.168.145.39:8000');
+var socket = io.connect('http://localhost:8000');
 
 // DOM Ready =============================================================
 $(document).ready(function($){
@@ -18,17 +17,27 @@ $(document).ready(function($){
 //------------------dialog initiation
     $( '#chooseLocationDlg' ).dialog({
         autoOpen: false,
-        height:100,
-        modal: true
+        height:200,
+        modal: true,
+        buttons:{
+            "OK": function(){
+                $(this).dialog("close");
+            }
+        }
     });
     $( '#writeNoteDlg' ).dialog({
         autoOpen: false,
-        height:100,
-        modal: true
+        height:200,
+        modal: true,
+        buttons:{
+            "OK": function(){
+                $(this).dialog("close");
+            }
+        }
     });
     $( "#voteConfirm" ).dialog({
         autoOpen: false,
-        height:150,
+        height:200,
         modal: true,
         buttons: {
             "Oui": function() {
@@ -319,6 +328,7 @@ function addVote(){
 }
 
 function confirmVote(){
+    $('#submitVote').prop("disabled",true);
     var input = $("#input");
     var value = input.val();
 

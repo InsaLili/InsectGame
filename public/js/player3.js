@@ -4,9 +4,8 @@ var groupNumber = 0;
 var playerNumber = 3;
 var allNotes = 0;
 var db = new PouchDB('http://192.168.145.39:5984/locationlist');
-/*var db = new PouchDB('http://localhost:5984/locationlist');*/
-var socket = io.connect('http://192.168.145.39:8000');
-/*var socket = io.connect('http://localhost:8000');*/
+// var socket = io.connect('http://192.168.145.39:8000');
+var socket = io.connect('http://localhost:8000');
 
 // DOM Ready =============================================================
 $(document).ready(function($){
@@ -18,17 +17,17 @@ $(document).ready(function($){
 //------------------dialog initiation
     $( '#chooseLocationDlg' ).dialog({
         autoOpen: false,
-        height:100,
+        height:200,
         modal: true
     });
     $( '#writeNoteDlg' ).dialog({
         autoOpen: false,
-        height:100,
+        height:200,
         modal: true
     });
     $( "#voteConfirm" ).dialog({
         autoOpen: false,
-        height:150,
+        height:200,
         modal: true,
         buttons: {
             "Oui": function() {

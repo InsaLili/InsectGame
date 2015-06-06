@@ -1,10 +1,8 @@
 /**
  * Created by Lili on 08/04/15.
  */
-var socket = io.connect('http://192.168.145.39:8000');
-//var socket = io.connect('http://192.168.145.35:8000');
-var db = new PouchDB('http://192.168.145.39:5984/locationlist');
-//var db = new PouchDB('http://192.168.145.35:5984/locationlist');
+var db = new PouchDB('http://localhost:5984/locationlist');
+var socket = io.connect('http://localhost:8000');
 
 var groupNumber = 0;
 var allRating = 0;
@@ -53,6 +51,7 @@ $(document).ready(function() {
 //-------------------set tasks' buttons and color
     $('#toStep2').prop('disabled', true);
     $('#finalStepBtn').on('click',function(){
+        $(this).prop('disabled', true);
         $('#finalDialog').dialog('open');
     });
     $('#finalStepBtn').prop('disabled', true);
@@ -67,16 +66,16 @@ $(document).ready(function() {
     $('.chooseLocation').hide();
     $('.visualPlayer').hide();
     var $mountain = $('.mountainLocations .location');
-    $($($mountain)[3]).offset({top: 200, left: 200});
-    $($($mountain)[0]).offset({top: 200, left: 1000});
-    $($($mountain)[2]).offset({top: 600, left: 200});
-    $($($mountain)[1]).offset({top: 600, left: 1000});
+    $($($mountain)[3]).offset({top: 300, left: 400});
+    $($($mountain)[0]).offset({top: 300, left: 1300});
+    $($($mountain)[2]).offset({top: 800, left: 400});
+    $($($mountain)[1]).offset({top: 800, left: 1300});
 
     var $school = $('.schoolLocations .location');
-    $($($school)[0]).offset({top: 0, left: 200});
-    $($($school)[2]).offset({top: 0, left: 1000});
-    $($($school)[1]).offset({top: 400, left: 200});
-    $($($school)[3]).offset({top: 400, left: 1000});
+    $($($school)[0]).offset({top: 100, left: 200});
+    $($($school)[2]).offset({top: 100, left: 1300});
+    $($($school)[1]).offset({top: 600, left: 200});
+    $($($school)[3]).offset({top: 600, left: 1300});
 
 
 //------------------Initialize each dialog
@@ -141,7 +140,12 @@ $(document).ready(function() {
         autoOpen: false,
         resizable: false,
         width: 400,
-        height: 200
+        height: 200,
+        buttons:{
+            "OK": function(){
+                $(this).dialog("close");
+            }
+        }
     });
     $('#secondStepDialog').dialog({
         autoOpen: false,
@@ -710,9 +714,9 @@ socket.on('addagu', function (data) {
 //    var location = data.location;
     $('.arguments span').append('<p id='+id+' class="aguPlayer'+player+'">'+content+'</p>');
     var noteHeight = $('#location'+location+' .note').height();
-    var aguHeight = $('.arguments').height();
+    var aguHeight = $('#location'+location+' .arguments').height();
 //    if(noteHeight+200 > 350){
-        $('#location'+location).height(noteHeight + aguHeight + 200 +'px');
+        $('#location'+location).height(noteHeight + aguHeight + 220 +'px');
 //    }else{
 //        $('#location'+location).height(350+'px');
 //    }
@@ -762,9 +766,9 @@ socket.on('deleteagu', function (data) {
         $('#location'+location).height(350+'px');
     }
     var noteHeight = $('#location'+location+' .note').height();
-    var aguHeight = $('.arguments').height();
+    var aguHeight = $('#location'+location+' .arguments').height();
 //    if(noteHeight+200 > 350){
-    $('#location'+location).height(noteHeight + aguHeight + 200 +'px');
+    $('#location'+location).height(noteHeight + aguHeight + 220 +'px');
 //    }else{
 //        $('#location'+location).height(350+'px');
 //    }

@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 // Database
 var PouchDB = require('pouchdb');
-var db = new PouchDB('http://192.168.145.39:5984/locationlist');
+var db = new PouchDB('http://localhost:5984/locationlist');
 //var db = new PouchDB('http://192.168.145.35:5984/locationlist');
 
 var app = express();
@@ -120,9 +120,46 @@ io.on('connection', function (socket) {
     });
 });
 
-/*db.put({
-  _id: 'measure/5/1',
-  group: 5,
-  locaton: 1
+db.put({
+  _id: 'measure/4/2',
+  group: 4,
+  location: 2
 });
-*/
+
+db.put({
+  _id: 'measure/4/3',
+  group: 4,
+  location: 3
+});
+
+db.put({
+  _id: 'measure/4/4',
+  group: 4,
+  location: 4
+});
+
+db.put({
+  _id: 'measure/4/5',
+  group: 4,
+  location: 5
+});
+
+db.put({
+  _id: 'measure/4/6',
+  group: 4,
+  location: 6
+});
+
+db.put({
+  _id: 'measure/4/7',
+  group: 4,
+  location: 7
+});
+
+db.put({
+  _id: 'measure/4/8',
+  group: 4,
+  location: 8
+});
+
+
