@@ -1,9 +1,8 @@
 /**
  * Created by Lili on 08/04/15.
  */
-var db = new PouchDB('http://192.168.1.89:5984/locationlist');
-var socket = io.connect('http://192.168.1.89:8000');
-
+var db = new PouchDB('http://192.168.145.39:5984/locationlist');
+var socket = io.connect('http://192.168.145.39:8000');
 var groupNumber = 0;
 var allRating = 0;
 var chosenNumber = 0;
@@ -489,16 +488,17 @@ function resetLocation(){
                  '-moz-transform' : 'rotate(0deg)',
                  '-ms-transform' : 'rotate(0deg)',
                  'transform' : 'rotate(0deg)'});
+    $location.touch();
 
-    $($location)[3].offset({top: 300, left: 400});
-    $($location)[0].offset({top: 300, left: 1300});
-    $($location)[2].offset({top: 800, left: 400});
-    $($location)[1].offset({top: 800, left: 1300});
+    $($($location)[3]).offset({top: 300, left: 400});
+    $($($location)[0]).offset({top: 300, left: 1300});
+    $($($location)[2]).offset({top: 800, left: 400});
+    $($($location)[1]).offset({top: 800, left: 1300});
 
-    $($location)[4].offset({top: 100, left: 200});
-    $($location)[6].offset({top: 100, left: 1300});
-    $($location)[5].offset({top: 600, left: 200});
-    $($location)[7].offset({top: 600, left: 1300});
+    $($($location)[4]).offset({top: 100, left: 200});
+    $($($location)[6]).offset({top: 100, left: 1300});
+    $($($location)[5]).offset({top: 600, left: 200});
+    $($($location)[7]).offset({top: 600, left: 1300});
 
 }
 //------following parts realize the communication between pages

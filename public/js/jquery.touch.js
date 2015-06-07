@@ -184,6 +184,12 @@
             if (!$.data(this, "plugin_touch")) {
                 $.data(this, 'plugin_touch', new Touch(this, options));
             }
+            if($.data(this, "plugin_touch").rotation){
+                $.data(this, "plugin_touch").rotation = 0;
+            }
+            if($.data(this, "plugin_touch").scale){
+                $.data(this, "plugin_touch").scale = 1;
+            }
         });
     };
 }(jQuery, window.TweenLite));

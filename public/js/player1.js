@@ -3,9 +3,9 @@ var locationNumber;
 var groupNumber = 0;
 var playerNumber = 1;
 var allNotes = 0;
-var db = new PouchDB('http://localhost:5984/locationlist');
-// var socket = io.connect('http://192.168.145.39:8000');
-var socket = io.connect('http://localhost:8000');
+var db = new PouchDB('http://192.168.145.39:5984/locationlist');
+var socket = io.connect('http://192.168.145.39:8000');
+/*var socket = io.connect('http://localhost:8000');*/
 
 // DOM Ready =============================================================
 $(document).ready(function($){

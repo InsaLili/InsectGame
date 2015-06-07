@@ -9,8 +9,7 @@ var bodyParser = require('body-parser');
 
 // Database
 var PouchDB = require('pouchdb');
-var db = new PouchDB('http://localhost:5984/locationlist');
-//var db = new PouchDB('http://192.168.145.35:5984/locationlist');
+var db = new PouchDB('http://192.168.145.39:5984/locationlist');
 
 var app = express();
 var routes = require('./routes/index');

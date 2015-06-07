@@ -34,6 +34,7 @@ router.get('/player2', function(req, res){
 router.get('/player3', function(req, res){
     res.render('player3', {});
 });
+
 router.get('/presentation', function(req, res){
     res.render('presentation', {});
 });
