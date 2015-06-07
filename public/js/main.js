@@ -6,7 +6,7 @@ var socket = io.connect('http://192.168.145.39:8000');
 var groupNumber = 0;
 var allRating = 0;
 var chosenNumber = 0;
-var noteBadgeNum = [0,0,0];
+var aguFlag = false;
 // DOM Ready =============================================================
 $(document).ready(function() {
     $(document).on('contextmenu', function() {
@@ -178,9 +178,8 @@ $(document).ready(function() {
         //----------------stop the timer and check if the timer equal to zero
         clearInterval(intervals.main);
         var currentTime = digits[0].current + digits[1].current +digits[2].current + digits[3].current;
-        var noteBadgeNumSum = noteBadgeNum[0]+noteBadgeNum[1]+noteBadgeNum[2];
+        var noteBadgeNumSum=0;
         var timerBadgeNum = 0;
-        $('#winNoteBadge').text('Vous avez gagné '+noteBadgeNumSum+' badges Note!');
         if(currentTime !==0){
             $('#secondStepDialog').dialog('open');
             $('#timerBadge img').show();
@@ -190,15 +189,34 @@ $(document).ready(function() {
         }
 
         db.get('badge/'+groupNumber).then(function(doc) {
+            var note1 = doc.note1;
+            var note2 = doc.note2;
+            var note3 = doc.note3;
+            var notebadge = $('.noteBadge img');
+
+            if(note1>=10){
+                $(notebadge[0]).show();
+                noteBadgeNumSum++;
+            }
+            if(note2>=10){
+                $(notebadge[1]).show();
+                noteBadgeNumSum++;
+            }
+            if(note3>=10){
+                $(notebadge[2]).show();
+                noteBadgeNumSum++
+            }
+
+            $('#winNoteBadge').text('Vous avez gagné '+noteBadgeNumSum+' badges Note!');
+
             console.log('group'+groupNumber);
             console.log('timerBadge'+timerBadgeNum);
-            console.log('noteBadge'+noteBadgeNumSum);
             return db.put({
                 group: groupNumber,
                 timer: timerBadgeNum,
-                note1:noteBadgeNum[0],
-                note2:noteBadgeNum[1],
-                note3:noteBadgeNum[2]
+                note1: note1,
+                note2: note2,
+                note3: note3
             }, 'badge/'+groupNumber, doc._rev);
         });
     });
@@ -219,9 +237,11 @@ $(document).ready(function() {
                 break;
             case 3:
                 $('#insectBtn3').show();
+                socket = io.connect('http://192.168.145.39:3000');
                 break;
             case 4:
                 $('#insectBtn4').show();
+                socket = io.connect('http://192.168.145.39:3000');
                 break;
         }
 //--------------------initialize map
@@ -417,7 +437,7 @@ function chooseLocation(element){
     console.log(buttonValue);
     var location = parseInt(buttonValue[0]);
     var player = parseInt(buttonValue[1]);
-    socket.emit('chooselocation', { location: location, player: player});
+    socket.emit('chooselocation', { location: location, player: player, group: groupNumber, aguflag: aguFlag});
 
     $('.visualPlayer'+player).hide();
     $('div#visualLocation'+location+' .visualPlayer'+player).show();
@@ -440,7 +460,8 @@ function confirmChoice(map){
     $('#step2').css('color', '#616161');
     $('#step3').css('color', '#E0E0E0');
     $('#finalStepBtn').removeAttr('disabled');
-
+    aguFlag = true;
+    
     socket.emit('confirmlocation', { location: chosenNumber});
     $('#school').prop('disabled', true);
     $('#mountain').prop('disabled', true);
@@ -546,22 +567,7 @@ socket.on('addnote', function (data) {
     }else{
         $('#location'+location).height(350+'px');
     }
-//    add note badge
-    if(notes >= 4){
-        var notebadge = $('.noteBadge img');
-        switch (player){
-            case 1:
-                $(notebadge[0]).show();
-                break;
-            case 2:
-                $(notebadge[1]).show();
-                break;
-            case 3:
-                $(notebadge[2]).show();
-                break
-        }
-        noteBadgeNum[player-1]=1;
-    }
+
 });
 
 socket.on('addagu', function (data) {
@@ -594,21 +600,6 @@ socket.on('deletenote', function (data) {
         $('#location'+location).height(noteHeight + 200 +'px');
     }else{
         $('#location'+location).height(350+'px');
-    }
-    if(notes <= 3){
-        var notebadge = $('.noteBadge img');
-        switch (player){
-            case 1:
-                $(notebadge[0]).hide();
-                break;
-            case 2:
-                $(notebadge[1]).hide();
-                break;
-            case 3:
-                $(notebadge[2]).hide();
-                break;
-        }
-        noteBadgeNum[player-1]=0;
     }
 });
 

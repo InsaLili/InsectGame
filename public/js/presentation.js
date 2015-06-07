@@ -320,13 +320,13 @@ function attachBadge(){
             $('#timerBadge img').show();
         }
         var notebadge = $('.noteBadge img');
-        if(doc.note1 == 1){
+        if(doc.note1 >= 10){
             $(notebadge[0]).show();
         }
-        if(doc.note2 == 1){
+        if(doc.note2 >= 10){
             $(notebadge[1]).show();
         }
-        if(doc.note3 == 1){
+        if(doc.note3 >= 10){
             $(notebadge[2]).show();
         }
     })

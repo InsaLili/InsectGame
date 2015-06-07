@@ -16,12 +16,22 @@ $(document).ready(function($){
     $( '#chooseLocationDlg' ).dialog({
         autoOpen: false,
         height:200,
-        modal: true
+        modal: true,
+        buttons:{
+            "OK": function(){
+                $(this).dialog("close");
+            }
+        }
     });
     $( '#writeNoteDlg' ).dialog({
         autoOpen: false,
         height:200,
-        modal: true
+        modal: true,
+        buttons:{
+            "OK": function(){
+                $(this).dialog("close");
+            }
+        }
     });
     $( "#voteConfirm" ).dialog({
         autoOpen: false,
@@ -51,11 +61,19 @@ $(document).ready(function($){
     });
     socket.on('chooselocation', function (data) {
         var player = data.player;
-        locationNumber = data.location;
         if(player == playerNumber){
+            var flag = data.aguflag;
+            locationNumber = data.location;
+            groupNumber = data.group;
             showInfoOnTable();
             attachNote();
-            attachVote()
+            attachVote();
+            if(flag == true){
+                $('#showAgu').show();
+                $('#addAgu').show();
+                $('#showNotes').hide();
+                $('#addNotes').hide();
+            }
         }
     });
     socket.on('confirmlocation', function (data) {
@@ -233,6 +251,21 @@ function addNote(event){
         });
     });
 
+    db.get('badge/'+groupNumber).then(function(doc){
+        console.log(doc);
+        var note1 = doc.note1;
+        var note2 = doc.note2;
+        var note3 = doc.note3;
+        var timer = doc.timer;
+        note3++;
+        return db.put({
+            group: groupNumber,
+            note1: note1,
+            note2: note2,
+            note3: note3,
+            timer: timer
+        }, 'badge/'+groupNumber, doc._rev);
+    });
 //    clear textarea
     textarea.val('');
 }
@@ -294,6 +327,21 @@ function deleteNote(id){
         $('#'+id).parent().remove();
         allNotes--;
         socket.emit('deletenote', {id: id, location: locationNumber, player: playerNumber, notes: allNotes});
+    });
+    db.get('badge/'+groupNumber).then(function(doc){
+        console.log(doc);
+        var note1 = doc.note1;
+        var note2 = doc.note2;
+        var note3 = doc.note3;
+        var timer = doc.timer;
+        note3--;
+        return db.put({
+            group: groupNumber,
+            note1: note1,
+            note2: note2,
+            note3: note3,
+            timer: timer
+        }, 'badge/'+groupNumber, doc._rev);
     });
 }
 function deleteAgu(id){
