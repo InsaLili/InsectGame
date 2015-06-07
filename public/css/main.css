@@ -183,7 +183,7 @@ p{
 }
 #tasks{
     float: left;
-    width: 800px;
+    width: 820px;
     background-color: #424242;
     box-shadow: 0 13px 25px 0 rgba(0, 0, 0, 0.3);
 }
@@ -201,11 +201,11 @@ p{
     color: #616161;
 }
 #nextStep{
-    margin-left: 80px;
+    margin-left: 40px;
     float: left;
 }
 #finalStep{
-    margin-left: 170px;
+    margin-left: 130px;
     float: left;
 }
 #selectLocation{
@@ -216,6 +216,12 @@ p{
 #submitChoice{
     margin-left: 10px;
 }
+#resetLocationBtn{
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
 #counter{
     float: left;
     width: 200px;
@@ -429,4 +435,13 @@ p{
 
 .leaflet-control-attribution{
     visibility: hidden;
+}
+.btn-circle {
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 20px;
 }

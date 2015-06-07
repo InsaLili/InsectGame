@@ -1,8 +1,8 @@
 /**
  * Created by Lili on 08/04/15.
  */
-var db = new PouchDB('http://localhost:5984/locationlist');
-var socket = io.connect('http://localhost:8000');
+var db = new PouchDB('http://192.168.1.89:5984/locationlist');
+var socket = io.connect('http://192.168.1.89:8000');
 
 var groupNumber = 0;
 var allRating = 0;
@@ -57,6 +57,7 @@ $(document).ready(function() {
     $('#finalStepBtn').prop('disabled', true);
     $('.submitChoice').on('click', submitChoice);
     $('#step1').css('color', '#E0E0E0');
+    $('#resetLocationBtn').on('click', resetLocation);
 
 //------------------Enable multi-touch of location cards
 //------------------Hide school location cards at first
@@ -251,170 +252,6 @@ $(document).ready(function() {
 
     $('#appLayer').hide();
 });
-function initMap(map) {
-//------------------add markers
-//------------------contents in markers
-    var contentString1 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="1,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="1,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="1,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
-
-    var contentString2 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="2,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="2,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="2,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
-
-    var contentString3 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="3,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="3,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="3,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
-
-    var contentString4 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="4,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="4,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="4,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
-
-    var contentString5 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="5,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="5,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="5,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
-
-    var contentString6 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="6,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="6,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="6,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
-
-    var contentString7 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="7,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="7,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="7,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
-
-    var contentString8 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="8,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="8,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="8,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
-
-    var message = [contentString1, contentString2, contentString3, contentString4, contentString5, contentString6, contentString7, contentString8];
-
-//    eight locations' coordinates
-    var locations = [[5.892298,45.395142],[5.891826,45.391789],[5.888789,45.394547],[5.890012,45.398352],[5.586956, 45.3967333],[5.583952, 45.382626], [5.596728, 45.385155], [5.592169, 45.37759]];
-
-    var myLayer = L.mapbox.featureLayer().addTo(map);
-
-//-----------------------JSON data for markers
-    var geoJson = [{
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": locations[0]
-        },
-        "properties": {
-            "title": "<h4>Balcon sur la cascade</h4>",
-            "content": message[0],
-            "marker-symbol": "chemist",
-            "marker-color": "#E91E63",
-            "marker-size": "large"
-        }
-    },{
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": locations[1]
-        },
-        "properties": {
-            "title": "<h4>Sous les embruns</h4>",
-            "content": message[1],
-            "marker-symbol": "chemist",
-            "marker-color": "#E91E63",
-            "marker-size": "large"
-        }
-    },{
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": locations[2]
-        },
-        "properties": {
-            "title": "<h4>Au détour du sentier</h4>",
-            "content": message[2],
-            "marker-symbol": "chemist",
-            "marker-color": "#E91E63",
-            "marker-size": "large"
-        }
-    },{
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": locations[3]
-        },
-        "properties": {
-            "title": "<h4>La clairière</h4>",
-            "content": message[3],
-            "marker-symbol": "chemist",
-            "marker-color": "#E91E63",
-            "marker-size": "large"
-        }
-    },{
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": locations[7]
-        },
-        "properties": {
-            "title": "<h4>Lycée N°4</h4>",
-            "content": message[4],
-            "marker-symbol": "chemist",
-            "marker-color": "#E91E63",
-            "marker-size": "large"
-        }
-    },{
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": locations[4]
-        },
-        "properties": {
-            "title": "<h4>Lycée N°1</h4>",
-            "content": message[5],
-            "marker-symbol": "chemist",
-            "marker-color": "#E91E63",
-            "marker-size": "large"
-        }
-    },{
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": locations[5]
-        },
-        "properties": {
-            "title": "<h4>Lycée N°2</h4>",
-            "content": message[6],
-            "marker-symbol": "chemist",
-            "marker-color": "#E91E63",
-            "marker-size": "large"
-        }
-    },{
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": locations[6]
-        },
-        "properties": {
-            "title": "<h4>Lycée N°3</h4>",
-            "content": message[7],
-            "marker-symbol": "chemist",
-            "marker-color": "#E91E63",
-            "marker-size": "large"
-        }
-    }];
-
-    myLayer.on('layeradd', function(e) {
-        var marker = e.layer,
-            feature = marker.feature;
-
-        var popupContent = feature.properties.title + feature.properties.content;
-
-        marker.bindPopup(popupContent,{
-            closeButton: false,
-            maxWidth: 350
-        });
-    });
-
-//----------------Add features to the map.
-    myLayer.setGeoJSON(geoJson);
-
-//----------------change focus between mountain and school
-    $('#mountainTab').on('click', function(){
-        $(this).addClass('activeTab');
-        $('#schoolTab').removeClass('activeTab');
-        $('.mountainLocations').show();
-        $('.schoolLocations').hide();
-        map.panTo([45.394547, 5.890489]);
-    });
-    $('#schoolTab').on('click', function(){
-        $(this).addClass('activeTab');
-        $('#mountainTab').removeClass('activeTab');
-        $('.schoolLocations').show();
-        $('.mountainLocations').hide();
-        map.panTo([45.387638, 5.587997]);
-    });
-}
 
 //-----------------Add users' notes to the location cards
 function attachNotes(){
@@ -646,7 +483,24 @@ function confirmChoice(map){
         }, 'decision/'+groupNumber, doc._rev);
     });
 }
+function resetLocation(){
+    var $location = $('.location');
+    $location.css({'-webkit-transform' : 'rotate(0deg)',
+                 '-moz-transform' : 'rotate(0deg)',
+                 '-ms-transform' : 'rotate(0deg)',
+                 'transform' : 'rotate(0deg)'});
 
+    $($location)[3].offset({top: 300, left: 400});
+    $($location)[0].offset({top: 300, left: 1300});
+    $($location)[2].offset({top: 800, left: 400});
+    $($location)[1].offset({top: 800, left: 1300});
+
+    $($location)[4].offset({top: 100, left: 200});
+    $($location)[6].offset({top: 100, left: 1300});
+    $($location)[5].offset({top: 600, left: 200});
+    $($location)[7].offset({top: 600, left: 1300});
+
+}
 //------following parts realize the communication between pages
 socket.on('addnote', function (data) {
     console.log(data);
@@ -812,5 +666,169 @@ socket.on('vote', function(data){
         $('#toStep2').removeAttr('disabled');
     }
 });
+function initMap(map) {
+//------------------add markers
+//------------------contents in markers
+    var contentString1 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="1,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="1,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="1,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+
+    var contentString2 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="2,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="2,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="2,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+
+    var contentString3 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="3,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="3,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="3,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+
+    var contentString4 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="4,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="4,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="4,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+
+    var contentString5 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="5,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="5,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="5,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+
+    var contentString6 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="6,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="6,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="6,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+
+    var contentString7 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="7,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="7,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="7,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+
+    var contentString8 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="8,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="8,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="8,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+
+    var message = [contentString1, contentString2, contentString3, contentString4, contentString5, contentString6, contentString7, contentString8];
+
+//    eight locations' coordinates
+    var locations = [[5.892298,45.395142],[5.891826,45.391789],[5.888789,45.394547],[5.890012,45.398352],[5.586956, 45.3967333],[5.583952, 45.382626], [5.596728, 45.385155], [5.592169, 45.37759]];
+
+    var myLayer = L.mapbox.featureLayer().addTo(map);
+
+//-----------------------JSON data for markers
+    var geoJson = [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": locations[0]
+        },
+        "properties": {
+            "title": "<h4>Balcon sur la cascade</h4>",
+            "content": message[0],
+            "marker-symbol": "chemist",
+            "marker-color": "#E91E63",
+            "marker-size": "large"
+        }
+    },{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": locations[1]
+        },
+        "properties": {
+            "title": "<h4>Sous les embruns</h4>",
+            "content": message[1],
+            "marker-symbol": "chemist",
+            "marker-color": "#E91E63",
+            "marker-size": "large"
+        }
+    },{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": locations[2]
+        },
+        "properties": {
+            "title": "<h4>Au détour du sentier</h4>",
+            "content": message[2],
+            "marker-symbol": "chemist",
+            "marker-color": "#E91E63",
+            "marker-size": "large"
+        }
+    },{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": locations[3]
+        },
+        "properties": {
+            "title": "<h4>La clairière</h4>",
+            "content": message[3],
+            "marker-symbol": "chemist",
+            "marker-color": "#E91E63",
+            "marker-size": "large"
+        }
+    },{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": locations[7]
+        },
+        "properties": {
+            "title": "<h4>Lycée N°4</h4>",
+            "content": message[4],
+            "marker-symbol": "chemist",
+            "marker-color": "#E91E63",
+            "marker-size": "large"
+        }
+    },{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": locations[4]
+        },
+        "properties": {
+            "title": "<h4>Lycée N°1</h4>",
+            "content": message[5],
+            "marker-symbol": "chemist",
+            "marker-color": "#E91E63",
+            "marker-size": "large"
+        }
+    },{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": locations[5]
+        },
+        "properties": {
+            "title": "<h4>Lycée N°2</h4>",
+            "content": message[6],
+            "marker-symbol": "chemist",
+            "marker-color": "#E91E63",
+            "marker-size": "large"
+        }
+    },{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": locations[6]
+        },
+        "properties": {
+            "title": "<h4>Lycée N°3</h4>",
+            "content": message[7],
+            "marker-symbol": "chemist",
+            "marker-color": "#E91E63",
+            "marker-size": "large"
+        }
+    }];
+
+    myLayer.on('layeradd', function(e) {
+        var marker = e.layer,
+            feature = marker.feature;
+
+        var popupContent = feature.properties.title + feature.properties.content;
+
+        marker.bindPopup(popupContent,{
+            closeButton: false,
+            maxWidth: 350
+        });
+    });
+
+//----------------Add features to the map.
+    myLayer.setGeoJSON(geoJson);
+
+//----------------change focus between mountain and school
+    $('#mountainTab').on('click', function(){
+        $(this).addClass('activeTab');
+        $('#schoolTab').removeClass('activeTab');
+        $('.mountainLocations').show();
+        $('.schoolLocations').hide();
+        map.panTo([45.394547, 5.890489]);
+    });
+    $('#schoolTab').on('click', function(){
+        $(this).addClass('activeTab');
+        $('#mountainTab').removeClass('activeTab');
+        $('.schoolLocations').show();
+        $('.mountainLocations').hide();
+        map.panTo([45.387638, 5.587997]);
+    });
+}
 
 
