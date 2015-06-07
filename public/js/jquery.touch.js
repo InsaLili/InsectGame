@@ -136,13 +136,13 @@
 
             //scale and rotate
             if(this.options.scalable) {
-//                if(this.scale* e.scale > 2){
-//                    myTransform += "scale(2)";
-//                }else if(this.scale* e.scale<0.5){
-//                    myTransform += "scale(0.5)";
-//                }else{
+                if(this.scale* e.scale > 2){
+                    myTransform += "scale(2)";
+                }else if(this.scale* e.scale<0.5){
+                    myTransform += "scale(0.5)";
+                }else{
                     myTransform += "scale(" + (this.scale * e.scale) + ")";
-//                }
+                }
             }
 
             if(this.options.rotatable) {
@@ -168,7 +168,13 @@
 
         //store scale and rotate values on gesture end
         if(this.gesture) {
-            this.scale *= e.scale;
+            if(this.scale* e.scale > 2){
+                    this.scale = 2;
+                }else if(this.scale* e.scale<0.5){
+                    this.scale = 0.5;
+                }else{
+                    this.scale *= e.scale;
+                }
             this.rotation = (this.rotation + e.rotation) % 360;
             this.gesture = false;
         }
