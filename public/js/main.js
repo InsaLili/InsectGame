@@ -488,17 +488,22 @@ function resetLocation(){
                  '-moz-transform' : 'rotate(0deg)',
                  '-ms-transform' : 'rotate(0deg)',
                  'transform' : 'rotate(0deg)'});
-    $location.touch();
+/*    if($('.mountainLocations').css('display') !== "none"){
+        var $mountain = $('.mountainLocations .location');
+        $($($mountain)[3]).offset({top: 250, left: 400});
+        $($($mountain)[0]).offset({top: 250, left: 1100});
+        $($($mountain)[2]).offset({top: 700, left: 400});
+        $($($mountain)[1]).offset({top: 700, left: 1100});
+    }
 
-    $($($location)[3]).offset({top: 250, left: 400});
-    $($($location)[0]).offset({top: 250, left: 1100});
-    $($($location)[2]).offset({top: 700, left: 400});
-    $($($location)[1]).offset({top: 700, left: 1100});
 
-    $($($location)[4]).offset({top: 50, left: 400});
-    $($($location)[6]).offset({top: 50, left: 1100});
-    $($($location)[5]).offset({top: 500, left: 400});
-    $($($location)[7]).offset({top: 500, left: 1100});
+    if($('.schoolLocations').css('display') !== "none"){
+        var $school = $('.schoolLocations .location');
+        $($($school)[0]).offset({top: 250, left: 400});
+        $($($school)[2]).offset({top: 250, left: 1100});
+        $($($school)[1]).offset({top: 700, left: 400});
+        $($($school)[3]).offset({top: 700, left: 1100});
+    }*/
 
 }
 //------following parts realize the communication between pages
