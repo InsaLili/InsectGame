@@ -3,8 +3,8 @@ var locationNumber;
 var groupNumber = 0;
 var playerNumber = 3;
 var allNotes = 0;
-var db = new PouchDB('http://192.168.145.39:5984/locationlist');
-var socket = io.connect('http://192.168.145.39:8000');
+var db = new PouchDB('http://192.168.145.45:5984/locationlist');
+var socket = io.connect('http://192.168.145.45:8000');
 // DOM Ready =============================================================
 $(document).ready(function($){
     //------------------hide arguments part
@@ -77,7 +77,8 @@ $(document).ready(function($){
         }
     });
     socket.on('confirmlocation', function (data) {
-        locationNumber = parseInt(data.location);
+        locationNumber = data.location;
+        groupNumber = data.group;
         showInfoOnTable();
         $('#showAgu').show();
         $('#addAgu').show();

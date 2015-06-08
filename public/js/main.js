@@ -1,8 +1,8 @@
 /**
  * Created by Lili on 08/04/15.
  */
-var db = new PouchDB('http://192.168.145.39:5984/locationlist');
-var socket = io.connect('http://192.168.145.39:8000');
+var db = new PouchDB('http://192.168.145.45:5984/locationlist');
+var socket = io.connect('http://192.168.145.45:8000');
 var groupNumber = 0;
 var allRating = 0;
 var chosenNumber = 0;
@@ -237,11 +237,11 @@ $(document).ready(function() {
                 break;
             case 3:
                 $('#insectBtn3').show();
-                socket = io.connect('http://192.168.145.39:3000');
+                //socket = io.connect('http://192.168.145.45:3000');
                 break;
             case 4:
                 $('#insectBtn4').show();
-                socket = io.connect('http://192.168.145.39:3000');
+                //socket = io.connect('http://192.168.145.45:3000');
                 break;
         }
 //--------------------initialize map
@@ -462,7 +462,7 @@ function confirmChoice(map){
     $('#finalStepBtn').removeAttr('disabled');
     aguFlag = true;
     
-    socket.emit('confirmlocation', { location: chosenNumber});
+    socket.emit('confirmlocation', { location: chosenNumber, group: groupNumber});
     $('#school').prop('disabled', true);
     $('#mountain').prop('disabled', true);
     $('.mountainLocations').show();
@@ -473,9 +473,9 @@ function confirmChoice(map){
     $('.chooseLocation').hide();
     $('.visualPlayers').show();
 //-----------------------to be improved
-    socket.emit('chooselocation', { location: chosenNumber, player: 1});
-    socket.emit('chooselocation', { location: chosenNumber, player: 2});
-    socket.emit('chooselocation', { location: chosenNumber, player: 3});
+    socket.emit('chooselocation', { location: chosenNumber, player: 1, group: groupNumber});
+    socket.emit('chooselocation', { location: chosenNumber, player: 2, group: groupNumber});
+    socket.emit('chooselocation', { location: chosenNumber, player: 3, group: groupNumber});
 
 //---------------------Final dialog
     var locationName = $('#location'+chosenNumber+' button').attr('name');
@@ -504,27 +504,24 @@ function confirmChoice(map){
     });
 }
 function resetLocation(){
-    var $location = $('.location');
-    $location.css({'-webkit-transform' : 'rotate(0deg)',
+    
+    if($('.mountainLocations').css('display') !== "none"){
+        var $mountain = $('.mountainLocations .location');
+        $mountain.touch();
+        $mountain.css({'-webkit-transform' : 'rotate(0deg)',
                  '-moz-transform' : 'rotate(0deg)',
                  '-ms-transform' : 'rotate(0deg)',
                  'transform' : 'rotate(0deg)'});
-/*    if($('.mountainLocations').css('display') !== "none"){
-        var $mountain = $('.mountainLocations .location');
-        $($($mountain)[3]).offset({top: 250, left: 400});
-        $($($mountain)[0]).offset({top: 250, left: 1100});
-        $($($mountain)[2]).offset({top: 700, left: 400});
-        $($($mountain)[1]).offset({top: 700, left: 1100});
     }
-
 
     if($('.schoolLocations').css('display') !== "none"){
         var $school = $('.schoolLocations .location');
-        $($($school)[0]).offset({top: 250, left: 400});
-        $($($school)[2]).offset({top: 250, left: 1100});
-        $($($school)[1]).offset({top: 700, left: 400});
-        $($($school)[3]).offset({top: 700, left: 1100});
-    }*/
+        $school.touch();
+        $school.css({'-webkit-transform' : 'rotate(0deg)',
+                 '-moz-transform' : 'rotate(0deg)',
+                 '-ms-transform' : 'rotate(0deg)',
+                 'transform' : 'rotate(0deg)'});
+    }
 
 }
 //------following parts realize the communication between pages
