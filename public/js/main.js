@@ -462,7 +462,7 @@ function confirmChoice(map){
     $('#finalStepBtn').removeAttr('disabled');
     aguFlag = true;
     
-    socket.emit('confirmlocation', { location: chosenNumber, group: groupNumber});
+    socket.emit('confirmlocation', { location: chosenNumber});
     $('#school').prop('disabled', true);
     $('#mountain').prop('disabled', true);
     $('.mountainLocations').show();

@@ -27,8 +27,8 @@ p, table{
 
 #locationInfo{
     float: left;
-    width: 55%;
-    height: 500px;
+    width: 60%;
+    height: 510px;
     background-color: #fff;
     margin-top: 10px;
     margin-left: 10px;
@@ -57,14 +57,16 @@ p, table{
 
 #showNotes, #showAgu{
     float: left;
-    width: 40%;
-    height: 180px;
-    overflow: scroll;
+    width: 35%;
+    height: 190px;
     margin-top: 10px;
     margin-left: 10px;
     background-color: #FAFAFA;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+    overflow: scroll;
 
+}
+#showNotes span{
 }
 .noteOfPlayer, .aguOfPlayer{
     float: left;
@@ -74,7 +76,7 @@ p, table{
 }
 #addNotes, #addAgu{
     float: left;
-    width: 40%;
+    width: 35%;
     height: 165px;
     margin-top: 10px;
     margin-left: 10px;
@@ -100,7 +102,7 @@ p, table{
 
 #vote{
     float: left;
-    width: 40%;
+    width: 35%;
     height: 135px;
     margin-top: 10px;
     margin-left: 10px;

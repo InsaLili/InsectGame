@@ -80,7 +80,6 @@ $(document).ready(function($){
     });
     socket.on('confirmlocation', function (data) {
         locationNumber = data.location;
-        groupNumber = data.group;
         showInfoOnTable();
         $('#showAgu').show();
         $('#addAgu').show();

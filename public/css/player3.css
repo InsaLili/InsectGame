@@ -27,8 +27,8 @@ p, table{
 
 #locationInfo{
     float: left;
-    width: 55%;
-    height: 500px;
+    width: 60%;
+    height: 510px;
     background-color: #fff;
     margin-top: 10px;
     margin-left: 10px;
@@ -57,8 +57,8 @@ p, table{
 
 #showNotes, #showAgu{
     float: left;
-    width: 40%;
-    height: 180px;
+    width: 35%;
+    height: 190px;
     overflow: scroll;
     margin-top: 10px;
     margin-left: 10px;
@@ -74,7 +74,7 @@ p, table{
 }
 #addNotes, #addAgu{
     float: left;
-    width: 40%;
+    width: 35%;
     height: 165px;
     margin-top: 10px;
     margin-left: 10px;
@@ -101,7 +101,7 @@ p, table{
 
 #vote{
     float: left;
-    width: 40%;
+    width: 35%;
     height: 135px;
     margin-top: 10px;
     margin-left: 10px;
