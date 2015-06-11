@@ -57,7 +57,6 @@ $(document).ready(function($){
     socket.on('choosegroup', function(data){
         console.log(data);
         groupNumber = data.group;
-        getNoteNumber();
     });
     socket.on('chooselocation', function (data) {
         var player = data.player;
@@ -364,6 +363,8 @@ function addVote(){
 }
 
 function confirmVote(){
+    $('#submitVote').prop('disabled', true);
+    
     var input = $("#input");
     var value = input.val();
 

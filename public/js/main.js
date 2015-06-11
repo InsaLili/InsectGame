@@ -3,6 +3,7 @@
  */
 var db = new PouchDB('http://192.168.145.45:5984/locationlist');
 var socket = io.connect('http://192.168.145.45:8000');
+
 var groupNumber = 0;
 var allRating = 0;
 var chosenNumber = 0;
@@ -91,7 +92,7 @@ $(document).ready(function() {
                 $('#timer').countdown({
                     image: "/img/digits.png",
                     format: "mm:ss",
-                    startTime: "30:00"
+                    startTime: "15:00"
                 });
             }
         }

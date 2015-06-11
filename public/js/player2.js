@@ -57,7 +57,6 @@ $(document).ready(function($){
     socket.on('choosegroup', function(data){
         console.log(data);
         groupNumber = data.group;
-        getNoteNumber();
     });
     socket.on('chooselocation', function (data) {
         var player = data.player;

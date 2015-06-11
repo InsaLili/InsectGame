@@ -119,3 +119,14 @@ io.on('connection', function (socket) {
         io.emit('vote', data);
     });
 });
+
+/*db.allDocs({
+        include_docs: true,
+        attachements: true,
+        startkey: 'vote',
+        endkey: 'vote\uffff'
+    }).then(function(notes){
+        for(var i=0; i < notes.rows.length; i++){
+            db.remove(notes.rows[i].doc);
+        }
+    });*/

@@ -3,9 +3,9 @@ var locationNumber;
 var groupNumber = 0;
 var playerNumber = 1;
 var allNotes = 0;
+
 var db = new PouchDB('http://192.168.145.45:5984/locationlist');
 var socket = io.connect('http://192.168.145.45:8000');
-/*var socket = io.connect('http://localhost:8000');*/
 
 // DOM Ready =============================================================
 $(document).ready(function($){
@@ -59,7 +59,6 @@ $(document).ready(function($){
     socket.on('choosegroup', function(data){
         console.log(data);
         groupNumber = data.group;
-        //getNoteNumber();
     });
     socket.on('chooselocation', function (data) {
         var player = data.player;
@@ -366,6 +365,7 @@ function addVote(){
 
 function confirmVote(){
     $('#submitVote').prop("disabled",true);
+    
     var input = $("#input");
     var value = input.val();
 
