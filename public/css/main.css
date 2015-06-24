@@ -61,7 +61,7 @@ h3{
     text-align: center;
 }
 p{
-    font-size: 15px;
+    font-size: 13px;
     color: #e0e0e0;
 }
 
@@ -89,19 +89,20 @@ p{
 }
 
 #insect a{
-    width: 110px;
-    height: 110px;
-    margin-left: 20%;
+    width: 50px;
+    height: 50px;
+    margin-left: 10%;
+    margin-top: 30px;
 }
 
 #insect a img{
-    width: 110px;
-    height: 110px;
+    margin-top: 30px;
+    width: 60px;
+    height: 60px;
 }
 .insects{
     background-color: #fff;
 }
-
 #leaderboard{
     margin-left: 1%;
     float: left;
@@ -113,13 +114,13 @@ p{
 
 #leaderboard .players {
     height: 150px;
-    width: 75%;
-    margin-left: 30px;
+    width: 80%;
+    margin-left: 20px;
     float: left;
 }
 .player{
     height: 150px;
-    width: 150px;
+    width: 160px;
     float: left;
     margin-right: 3%;
 }
@@ -156,7 +157,7 @@ p{
 }
 
 #leaderboard .progressbar{
-    width: 125px;
+    width: 130px;
     float: left;
     /*margin-top: 12px;*/
 }
@@ -174,8 +175,8 @@ p{
 }
 #timerBadge{
     float: right;
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
 }
 #timerBadge img{
     width: 100%;
@@ -229,7 +230,7 @@ p{
     background-color: #424242;
     box-shadow: 0 13px 25px 0 rgba(0, 0, 0, 0.3);
 }
-#counter #timer{
+#timer1,#timer2,#timer3 {
     width: 145px;
     margin-left: auto;
     margin-right: auto;
@@ -285,6 +286,12 @@ p{
     overflow: visible;
     border-radius: 15px;
     box-shadow: 0 13px 25px 0 rgba(0, 0, 0, 0.3);
+}
+#insectImg,#energyImg{
+    position: absolute;
+    left: 75px;
+    top: 200px;
+    z-index: 10;
 }
 .mountainLocations .location{
     background-color: #D7CCC8;
@@ -447,4 +454,14 @@ p{
   font-size: 12px;
   line-height: 1.42;
   border-radius: 20px;
+}
+.markerImg{
+    margin-bottom: 10px;
+    width: 100%;
+}
+.markerBtn{
+    margin-right: 5px;
+}
+.markerCheck{
+    margin-right: 20px;
 }

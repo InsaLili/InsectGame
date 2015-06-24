@@ -1,8 +1,10 @@
 /**
  * Created by Lili on 08/04/15.
  */
-var db = new PouchDB('http://192.168.145.45:5984/locationlist');
-var socket = io.connect('http://192.168.145.45:8000');
+var db = new PouchDB('http://192.168.145.53:5984/insect');
+var socket = io.connect('http://192.168.145.53:8000');
+//var db = new PouchDB('http://192.168.1.49:8080/insect');
+//var socket = io.connect('http://192.168.1.49:8000');
 
 var groupNumber = 0;
 var allRating = 0;
@@ -13,36 +15,51 @@ $(document).ready(function() {
     $(document).on('contextmenu', function() {
         return false;
     });
+//db.allDocs({
+//    include_docs: true,
+//    attachements: true,
+//    startkey: 'agu',
+//    endkey: 'agu\uffff'
+//}).then(function(notes){
+//    for(var i=0; i < notes.rows.length; i++){
+//        db.remove(notes.rows[i].doc);
+//    }
+//});
 
 //-------------------set insect information dialog
-    $('#insectBtn').hide();
-    $('#insectBtn1').on('click', function(){
-        $('#insect1').dialog('open');
-        $('#insectInfoWrap').touch();
+    var insectShow = false, energyShow = false;
+    $('#insectBtn').on('click', function(){
+        if(insectShow == false){
+            $('#insectImg').show();
+            insectShow = true;
+        }else{
+            $('#insectImg').hide();
+            insectShow = false;
+        }
     });
-    $('#insectBtn2').on('click', function(){
-        $('#insect2').dialog('open');
-        $('#insectInfoWrap').touch();
+    $('#energyBtn').on('click', function(){
+        if(energyShow == false){
+            $('#energyImg').show();
+            energyShow = true;
+        }else{
+            $('#energyImg').hide();
+            energyShow = false;
+        }
     });
-    $('#insectBtn3').on('click', function(){
-        $('#insect3').dialog('open');
-        $('#insectInfoWrap').touch();
-    });
-    $('#insectBtn4').on('click', function(){
-        $('#insect4').dialog('open');
-        $('#insectInfoWrap').touch();
-    });
-   $('.badges img').hide();
+
+    $('.badges img').hide();
+    $('#insectImg').hide();
+    $('#energyImg').hide();
 
 //------------------initialize progress bar;
     $( "#progressbar1" ).progressbar({
-        max: 8
+        max: 4
     });
     $( "#progressbar2" ).progressbar({
-        max: 8
+        max: 4
     });
     $( "#progressbar3" ).progressbar({
-        max: 8
+        max: 4
     });
     $( ".progressbar" ).on( "progressbarcomplete", function( event, ui ) {
         allRating++;
@@ -63,6 +80,8 @@ $(document).ready(function() {
 //------------------Hide school location cards at first
 //------------------Set initial position of each card
     $('.location').touch();
+    $('#insectImg').touch();
+    $('#energyImg').touch();
     $('.schoolLocations').hide();
     $('.chooseLocation').hide();
     $('.visualPlayer').hide();
@@ -89,48 +108,18 @@ $(document).ready(function() {
             "Commencer": function() {
                 $( this ).dialog( "close" );
                 //-------------------set the counter
-                $('#timer').countdown({
+                $('#timer1').countdown({
                     image: "/img/digits.png",
                     format: "mm:ss",
-                    startTime: "15:00"
+                    startTime: "08:00"
                 });
             }
         }
     });
-    $('#insect1').dialog({
+    $('#insectDialog').dialog({
         autoOpen: false,
-        width: 800,
-        height:600,
-        buttons:{
-            "OK": function(){
-                $(this).dialog("close");
-            }
-        }
-    });
-    $('#insect2').dialog({
-        autoOpen: false,
-        width: 800,
-        height:600,
-        buttons:{
-            "OK": function(){
-                $(this).dialog("close");
-            }
-        }
-    });
-    $('#insect3').dialog({
-        autoOpen: false,
-        width: 700,
-        height: 500,
-        buttons:{
-            "OK": function(){
-                $(this).dialog("close");
-            }
-        }
-    });
-    $('#insect4').dialog({
-        autoOpen: false,
-        width: 600,
-        height:350,
+        width: 820,
+        height:800,
         buttons:{
             "OK": function(){
                 $(this).dialog("close");
@@ -161,6 +150,19 @@ $(document).ready(function() {
             }
         }
     });
+    $('#secondStepDialog_noBadge').dialog({
+        autoOpen: false,
+        resizable: false,
+        width:600,
+        height:350,
+        modal: true,
+        buttons: {
+            "Commencer": function() {
+                $( this ).dialog( "close" );
+                secondStep();
+            }
+        }
+    });
     $( "#gameEnd" ).dialog({
         autoOpen: false,
         width:600,
@@ -169,46 +171,37 @@ $(document).ready(function() {
         buttons: {
             "Commencer": function() {
                 $( this ).dialog( "close" );
+                $('#timer3').countdown({
+                    image: "/img/digits.png",
+                    format: "mm:ss",
+                    startTime: "07:00"
+                });
             }
         }
     });
 
 //--------------bind event to buttons
     $('#toStep2').on('click', function(){
-
-        //----------------stop the timer and check if the timer equal to zero
-        clearInterval(intervals.main);
-        var currentTime = digits[0].current + digits[1].current +digits[2].current + digits[3].current;
-        var noteBadgeNumSum=0;
-        var timerBadgeNum = 0;
-        if(currentTime !==0){
-            $('#secondStepDialog').dialog('open');
-            $('#timerBadge img').show();
-            timerBadgeNum = 1;
-        }else{
-            $('#secondStepDialog').dialog('open');
-        }
-
         db.get('badge/'+groupNumber).then(function(doc) {
             var note1 = doc.note1;
             var note2 = doc.note2;
             var note3 = doc.note3;
             var notebadge = $('.noteBadge img');
 
-            if(note1>=10){
+            if(note1>=5){
                 $(notebadge[0]).show();
                 noteBadgeNumSum++;
             }
-            if(note2>=10){
+            if(note2>=5){
                 $(notebadge[1]).show();
                 noteBadgeNumSum++;
             }
-            if(note3>=10){
+            if(note3>=5){
                 $(notebadge[2]).show();
                 noteBadgeNumSum++
             }
 
-            $('#winNoteBadge').text('Vous avez gagné '+noteBadgeNumSum+' badges Note!');
+            $('.winNoteBadge').text('Vous avez gagné '+noteBadgeNumSum+' badges Note!');
 
             console.log('group'+groupNumber);
             console.log('timerBadge'+timerBadgeNum);
@@ -220,34 +213,30 @@ $(document).ready(function() {
                 note3: note3
             }, 'badge/'+groupNumber, doc._rev);
         });
+        //----------------stop the timer and check if the timer equal to zero
+        clearInterval(intervals.main);
+        var currentTime = digits[0].current + digits[1].current +digits[2].current + digits[3].current;
+        var noteBadgeNumSum=0;
+        var timerBadgeNum = 0;
+        if(digits[1].current != 9){
+            $('#secondStepDialog').dialog('open');
+            $('#timerBadge img').show();
+            timerBadgeNum = 1;
+        }else{
+            $('#secondStepDialog_noBadge').dialog('open');
+        }
+        $('#timer1').remove();
     });
 
     $('.chooseGroupBtn').on('click', function(){
         $('#appLayer').show();
         $('#maskLayer').hide();
-        $('.insectBtn').hide();
         groupNumber = parseInt($(this).val());
         socket.emit('choosegroup', { group: groupNumber});
 
-        switch (groupNumber){
-            case 1:
-                $('#insectBtn1').show();
-                break;
-            case 2:
-                $('#insectBtn2').show();
-                break;
-            case 3:
-                $('#insectBtn3').show();
-                //socket = io.connect('http://192.168.145.45:3000');
-                break;
-            case 4:
-                $('#insectBtn4').show();
-                //socket = io.connect('http://192.168.145.45:3000');
-                break;
-        }
 //--------------------initialize map
         L.mapbox.accessToken = 'pk.eyJ1IjoiYXVyZWxpZW50IiwiYSI6Inh3NHZEWkUifQ.5xwAdbx7sU0mi-DT98e3VA';
-        var map = L.mapbox.map('map', 'aurelient.m7apk42a', {
+        var map = L.mapbox.map('map', 'insalili.meikk0a8', {
             zoomControl: false
         }).setView([45.394547, 5.890489], 15);
         initMap(map);
@@ -280,14 +269,28 @@ function attachNotes(){
     db.allDocs({
         include_docs: true,
         attachements: true,
-        startkey: startKey,
-        endkey: startKey+'\uffff'
+        startkey: startKey+'_1',
+        endkey: startKey+'_4\uffff'
     }).then(function(locationData){
+        var note1 = 0;
+        var note2 = 0;
+        var note3 = 0;
         for(var i = 0; i < locationData.rows.length; i++){
             var location = locationData.rows[i].doc.location;
             var player = locationData.rows[i].doc.author;
             var content = locationData.rows[i].doc.content;
             var id = locationData.rows[i].doc._id;
+            switch (player){
+                case 1:
+                    note1++;
+                    break;
+                case 2:
+                    note2++;
+                    break;
+                case 3:
+                    note3++;
+                    break;
+            }
             switch (location){
                 case 1:
                     $('#note1').append('<p id='+id+' class="notePlayer'+player+'">'+content+'</p>');
@@ -315,6 +318,15 @@ function attachNotes(){
                     break;
             }
         }
+        db.get('badge/'+groupNumber).then(function(doc) {
+            return db.put({
+                group: groupNumber,
+                note1: note1,
+                note2: note2,
+                note3: note3,
+                timer: 0
+            }, 'badge/'+groupNumber, doc._rev);
+        });
     });
 }
 
@@ -324,8 +336,8 @@ function attachRating(){
     db.allDocs({
         include_docs: true,
         attachements: true,
-        startkey: startKey,
-        endkey: startKey+'\uffff'
+        startkey: startKey+'_1',
+        endkey: startKey+'_4\uffff'
     }).then(function(votes){
         var rating1=0, rating2=0, rating3=0;
         for(var i = 0; i < votes.rows.length; i++) {
@@ -352,9 +364,9 @@ function attachRating(){
             value: rating3
         });
         var progressbarText = $('.player p');
-        $(progressbarText[0]).text(rating1 + '/8 Emplacements');
-        $(progressbarText[1]).text(rating2 + '/8 Emplacements');
-        $(progressbarText[2]).text(rating3 + '/8 Emplacements');
+        $(progressbarText[0]).text(rating1 + '/4 Emplacements');
+        $(progressbarText[1]).text(rating2 + '/4 Emplacements');
+        $(progressbarText[2]).text(rating3 + '/4 Emplacements');
 
         if(allRating == 3){
             $('#toStep2').removeAttr('disabled');
@@ -431,6 +443,11 @@ function secondStep(){
     $('.visualPlayers').hide();
 
     attachVotes();
+    $('#timer2').countdown({
+        image: "/img/digits.png",
+        format: "mm:ss",
+        startTime: "05:00"
+    });
 }
 
 function chooseLocation(element){
@@ -450,10 +467,13 @@ function chooseLocation(element){
 }
 
 function submitChoice(){
+    clearInterval(intervals.main);
+    $('#timer2').remove();
     chosenNumber = parseInt($(this).val());
     var locationName = $(this).attr("name");
     $('#choiceConfirm h4').text("Voulez vous choisir l'emplacement '"+locationName+"' ?");
     $( "#choiceConfirm" ).dialog( "open");
+
 }
 
 function confirmChoice(map){
@@ -635,7 +655,7 @@ socket.on('vote', function(data){
             progressbar.progressbar({
                 value: rating
             });
-            progressbar.next().text(rating + '/8 Emplacements');
+            progressbar.next().text(rating + '/4 Emplacements');
             break;
         case 2:
             progressbar = $("#progressbar2");
@@ -644,7 +664,7 @@ socket.on('vote', function(data){
             progressbar.progressbar({
                 value: rating
             });
-            progressbar.next().text(rating + '/8 Emplacements');
+            progressbar.next().text(rating + '/4 Emplacements');
             break;
         case 3:
             progressbar = $("#progressbar3");
@@ -653,7 +673,7 @@ socket.on('vote', function(data){
             progressbar.progressbar({
                 value: rating
             });
-            progressbar.next().text(rating + '/8 Emplacements');
+            progressbar.next().text(rating + '/4 Emplacements');
             break;
     }
     if(allRating == 3){
@@ -663,21 +683,21 @@ socket.on('vote', function(data){
 function initMap(map) {
 //------------------add markers
 //------------------contents in markers
-    var contentString1 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="1,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="1,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="1,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+    var contentString1 = '<div id="marker1">'+'<img class= "markerImg" src="/img/balcon.jpg">'+'<button type="button" class="btn player1 markerBtn" value="1,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="1,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="1,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
 
-    var contentString2 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="2,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="2,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="2,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+    var contentString2 = '<div id="marker2">'+'<img class= "markerImg" src="/img/embruns.jpg">'+'<button type="button" class="btn player1 markerBtn" value="2,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="2,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="2,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
 
-    var contentString3 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="3,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="3,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="3,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+    var contentString3 = '<div id="marker3">'+ '<img class= "markerImg" src="/img/sentier.jpg">'+'<button type="button" class="btn player1 markerBtn" value="3,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="3,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="3,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button> '+'</div>';
 
-    var contentString4 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="4,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="4,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="4,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+    var contentString4 = '<div id="marker4">'+ '<img class= "markerImg" src="/img/clairiere.jpg">'+'<button type="button" class="btn player1 markerBtn" value="4,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="4,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="4,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button> '+'</div>';
 
-    var contentString5 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="5,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="5,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="5,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+    var contentString5 = '<div id="marker5">'+ '<img class= "markerImg" src="/img/school4.jpg">'+'<button type="button" class="btn player1 markerBtn" value="5,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="5,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="5,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button> '+'</div>';
 
-    var contentString6 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="6,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="6,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="6,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+    var contentString6 = '<div id="marker6">'+ '<img class= "markerImg" src="/img/school1.jpg">'+'<button type="button" class="btn player1 markerBtn" value="6,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="6,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="6,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button> '+'</div>';
 
-    var contentString7 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="7,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="7,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="7,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+    var contentString7 = '<div id="marker7">'+ '<img class= "markerImg" src="/img/school2.jpg">'+'<button type="button" class="btn player1 markerBtn" value="7,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="7,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="7,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button> '+'</div>';
 
-    var contentString8 = '<div>'+'<button type="button" class="btn player1 markerBtn" value="8,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="8,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="8,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button>'+'</div>';
+    var contentString8 = '<div id="marker8">'+ '<img class= "markerImg" src="/img/school3.jpg">'+'<button type="button" class="btn player1 markerBtn" value="8,1" onclick="chooseLocation(this)"><img src="/img/player1.png"></button> '+' <button type="button" class="btn player2 markerBtn" value="8,2" onclick="chooseLocation(this)"><img src="/img/player2.png"></button> '+' <button type="button" class="btn player3 markerBtn" value="8,3" onclick="chooseLocation(this)"><img src="/img/player3.png"></button> '+'</div>';
 
     var message = [contentString1, contentString2, contentString3, contentString4, contentString5, contentString6, contentString7, contentString8];
 
@@ -696,6 +716,7 @@ function initMap(map) {
         "properties": {
             "title": "<h4>Balcon sur la cascade</h4>",
             "content": message[0],
+            "image":"img/balcon.jpg",
             "marker-symbol": "chemist",
             "marker-color": "#E91E63",
             "marker-size": "large"
@@ -801,7 +822,8 @@ function initMap(map) {
 
         marker.bindPopup(popupContent,{
             closeButton: false,
-            maxWidth: 350
+            minWidth:400,
+            maxWidth: 400
         });
     });
 
@@ -814,14 +836,14 @@ function initMap(map) {
         $('#schoolTab').removeClass('activeTab');
         $('.mountainLocations').show();
         $('.schoolLocations').hide();
-        map.panTo([45.394547, 5.890489]);
+        map.setView([45.394547, 5.890489], 15);
     });
     $('#schoolTab').on('click', function(){
         $(this).addClass('activeTab');
         $('#mountainTab').removeClass('activeTab');
         $('.schoolLocations').show();
         $('.mountainLocations').hide();
-        map.panTo([45.387638, 5.587997]);
+        map.setView([45.387638, 5.587997], 15);
     });
 }
 

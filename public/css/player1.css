@@ -10,11 +10,12 @@
 html{
     width: 100%;
     height: 526px;
+    background-color: #fff;
 }
 body{
     width: 100%;
     height: 100%;
-    background-color: #EEEEEE;
+    margin-top:20px;
 }
 
 p, table{
@@ -83,8 +84,19 @@ p, table{
 }
 
 #myNote, #myAgu{
-    width: 95%;
-    margin: auto;
+    width: 70%;
+    margin-left: 10px;
+    float: left;
+}
+#avatar{
+    width:70px;
+    height:70px;
+    float: left;
+    margin-left: 10px;
+}
+#avatar img{
+    width: 100%;
+    height: 100%;
 }
 #submitNote, #submitAgu{
     margin-top: 5px;

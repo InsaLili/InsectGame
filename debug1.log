@@ -1,0 +1,134 @@
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:07:31.269Z"}
+{"location":1,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:08:28.547Z"}
+{"location":1,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:08:40.940Z"}
+{"location":1,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:08:41.368Z"}
+{"location":1,"group":1,"player":1,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:09:46.312Z"}
+{"location":1,"group":1,"player":3,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:09:46.506Z"}
+{"location":1,"group":1,"player":2,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:09:46.524Z"}
+{"id":"note_1_1_2_1","content":"Beau","location":1,"player":2,"notes":1,"level":"info","message":"add note","timestamp":"2015-06-24T08:09:51.502Z"}
+{"location":2,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:09:51.535Z"}
+{"location":2,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:09:52.024Z"}
+{"location":2,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:09:52.531Z"}
+{"id":"note_1_2_3_1","content":"Chaud","location":2,"player":3,"notes":1,"level":"info","message":"add note","timestamp":"2015-06-24T08:10:01.112Z"}
+{"id":"note_1_2_1_1","content":"Great","location":2,"player":1,"notes":1,"level":"info","message":"add note","timestamp":"2015-06-24T08:10:10.237Z"}
+{"location":2,"group":1,"player":3,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:10:18.074Z"}
+{"location":2,"group":1,"player":1,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:10:18.259Z"}
+{"location":2,"group":1,"player":2,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:10:18.833Z"}
+{"id":"note_1_2_2_1","content":"Froid","location":2,"player":2,"notes":2,"level":"info","message":"add note","timestamp":"2015-06-24T08:10:23.092Z"}
+{"id":"note_1_2_1_2","content":"Beau","location":2,"player":1,"notes":2,"level":"info","message":"add note","timestamp":"2015-06-24T08:10:28.482Z"}
+{"id":"note_1_2_2_2","content":"Tiède","location":2,"player":2,"notes":3,"level":"info","message":"add note","timestamp":"2015-06-24T08:10:29.239Z"}
+{"id":"note_1_2_3_2","content":"Bonjour","location":2,"player":3,"notes":2,"level":"info","message":"add note","timestamp":"2015-06-24T08:10:34.242Z"}
+{"location":3,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:10:37.233Z"}
+{"id":"note_1_2_3_3","content":"Test","location":2,"player":3,"notes":3,"level":"info","message":"add note","timestamp":"2015-06-24T08:10:42.578Z"}
+{"id":"note_1_2_2_3","content":"Test","location":2,"player":2,"notes":4,"level":"info","message":"add note","timestamp":"2015-06-24T08:10:43.249Z"}
+{"location":3,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:10:45.815Z"}
+{"location":3,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:10:46.156Z"}
+{"id":"note_1_3_1_1","content":"Hello","location":3,"player":1,"notes":3,"level":"info","message":"add note","timestamp":"2015-06-24T08:10:53.806Z"}
+{"location":3,"group":1,"player":2,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:10:54.504Z"}
+{"location":3,"group":1,"player":3,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:10:54.563Z"}
+{"id":"note_1_3_1_2","content":"World","location":3,"player":1,"notes":4,"level":"info","message":"add note","timestamp":"2015-06-24T08:10:58.703Z"}
+{"location":3,"group":1,"player":1,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:11:02.415Z"}
+{"id":"note_1_3_2_1","content":"Bien","location":3,"player":2,"notes":5,"level":"info","message":"add note","timestamp":"2015-06-24T08:11:02.698Z"}
+{"id":"note_1_3_3_1","content":"Coucou","location":3,"player":3,"notes":4,"level":"info","message":"add note","timestamp":"2015-06-24T08:11:07.468Z"}
+{"location":4,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:11:10.670Z"}
+{"location":4,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:11:10.989Z"}
+{"location":4,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:11:11.314Z"}
+{"location":4,"group":1,"player":3,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:11:18.209Z"}
+{"location":4,"group":1,"player":1,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:11:18.332Z"}
+{"location":4,"group":1,"player":2,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:11:18.707Z"}
+{"id":"note_1_4_2_1","content":"Test","location":4,"player":2,"notes":6,"level":"info","message":"add note","timestamp":"2015-06-24T08:11:22.419Z"}
+{"id":"note_1_4_1_1","content":"Cold","location":4,"player":1,"notes":5,"level":"info","message":"add note","timestamp":"2015-06-24T08:11:25.294Z"}
+{"id":"note_1_4_3_1","content":"Test","location":4,"player":3,"notes":5,"level":"info","message":"add note","timestamp":"2015-06-24T08:11:26.449Z"}
+{"id":"note_1_4_1_2","content":"Bright","location":4,"player":1,"notes":6,"level":"info","message":"add note","timestamp":"2015-06-24T08:11:29.886Z"}
+{"location":1,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:11:44.401Z"}
+{"location":1,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:11:44.788Z"}
+{"location":1,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:11:45.159Z"}
+{"location":2,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:11:50.308Z"}
+{"location":2,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:11:50.816Z"}
+{"location":2,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:11:51.245Z"}
+{"location":3,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:12:05.555Z"}
+{"location":3,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:12:06.050Z"}
+{"location":3,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:12:06.689Z"}
+{"location":4,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:12:13.075Z"}
+{"location":4,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:12:13.545Z"}
+{"location":4,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:12:13.973Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:12:41.019Z"}
+{"location":2,"level":"info","message":"confirm the location","timestamp":"2015-06-24T08:17:26.752Z"}
+{"location":2,"player":1,"group":1,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:17:26.786Z"}
+{"location":2,"player":2,"group":1,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:17:26.787Z"}
+{"location":2,"player":3,"group":1,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:17:26.790Z"}
+{"id":"agu_1_2_3_1","content":"Utkhihihigkfigngkvkhk","location":2,"player":3,"level":"info","message":"add arguments","timestamp":"2015-06-24T08:17:56.032Z"}
+{"id":"agu_1_2_2_1","content":"Khihlhlglhkgkflflfglglh","location":2,"player":2,"level":"info","message":"add arguments","timestamp":"2015-06-24T08:17:56.094Z"}
+{"id":"agu_1_2_1_1","content":"Jigkvjegzjgpkkyec2t46yokp,h","location":2,"player":1,"level":"info","message":"add arguments","timestamp":"2015-06-24T08:18:06.020Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:18:51.743Z"}
+{"location":6,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:19:04.616Z"}
+{"location":6,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:19:04.889Z"}
+{"location":6,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:19:05.105Z"}
+{"location":6,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:19:31.214Z"}
+{"location":6,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:19:31.658Z"}
+{"location":6,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:19:32.142Z"}
+{"location":6,"group":1,"player":2,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:19:47.803Z"}
+{"location":6,"group":1,"player":3,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:19:47.831Z"}
+{"location":6,"group":1,"player":1,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:19:47.889Z"}
+{"id":"note_1_6_3_1","content":"Ntor","location":6,"player":3,"notes":1,"level":"info","message":"add note","timestamp":"2015-06-24T08:19:52.242Z"}
+{"id":"note_1_6_2_1","content":"Bgkg","location":6,"player":2,"notes":1,"level":"info","message":"add note","timestamp":"2015-06-24T08:19:55.198Z"}
+{"location":8,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:20:00.966Z"}
+{"location":8,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:20:01.180Z"}
+{"location":8,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:20:01.485Z"}
+{"id":"note_1_8_1_1","content":"Great","location":8,"player":1,"notes":1,"level":"info","message":"add note","timestamp":"2015-06-24T08:20:06.164Z"}
+{"id":"note_1_8_1_2","content":"Hot","location":8,"player":1,"notes":2,"level":"info","message":"add note","timestamp":"2015-06-24T08:20:11.958Z"}
+{"location":8,"group":1,"player":2,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:20:20.069Z"}
+{"id":"note_1_8_1_3","content":"Cool","location":8,"player":1,"notes":3,"level":"info","message":"add note","timestamp":"2015-06-24T08:20:20.163Z"}
+{"location":8,"group":1,"player":3,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:20:23.406Z"}
+{"location":5,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:20:34.384Z"}
+{"location":5,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:20:34.723Z"}
+{"location":8,"group":1,"player":1,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:20:35.470Z"}
+{"location":5,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:20:42.310Z"}
+{"location":5,"group":1,"player":3,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:20:43.726Z"}
+{"location":5,"group":1,"player":2,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:20:43.740Z"}
+{"id":"note_1_5_3_1","content":"Klll","location":5,"player":3,"notes":2,"level":"info","message":"add note","timestamp":"2015-06-24T08:20:50.370Z"}
+{"location":5,"group":1,"player":1,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:20:50.709Z"}
+{"id":"note_1_5_3_2","content":"Kjkl","location":5,"player":3,"notes":3,"level":"info","message":"add note","timestamp":"2015-06-24T08:20:53.082Z"}
+{"id":"note_1_5_3_3","content":"Jhjkl","location":5,"player":3,"notes":4,"level":"info","message":"add note","timestamp":"2015-06-24T08:20:55.451Z"}
+{"id":"note_1_5_1_1","content":"Good","location":5,"player":1,"notes":4,"level":"info","message":"add note","timestamp":"2015-06-24T08:20:56.605Z"}
+{"id":"note_1_5_3_4","content":"Jhhkk","location":5,"player":3,"notes":5,"level":"info","message":"add note","timestamp":"2015-06-24T08:20:57.864Z"}
+{"location":7,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:21:03.260Z"}
+{"location":7,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:21:04.644Z"}
+{"location":7,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:21:05.073Z"}
+{"location":7,"group":1,"player":3,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:21:11.271Z"}
+{"location":7,"group":1,"player":2,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:21:11.278Z"}
+{"location":7,"group":1,"player":1,"level":"info","message":"vote for location","timestamp":"2015-06-24T08:21:11.325Z"}
+{"id":"note_1_7_3_1","content":"Jllk","location":7,"player":3,"notes":6,"level":"info","message":"add note","timestamp":"2015-06-24T08:21:34.804Z"}
+{"location":5,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:04.798Z"}
+{"location":5,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:05.180Z"}
+{"location":5,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:05.609Z"}
+{"location":7,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:15.657Z"}
+{"location":7,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:15.961Z"}
+{"location":7,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:16.251Z"}
+{"location":8,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:26.610Z"}
+{"location":8,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:26.910Z"}
+{"location":8,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:27.349Z"}
+{"location":6,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:47.521Z"}
+{"location":6,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:48.302Z"}
+{"location":6,"player":2,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:48.621Z"}
+{"location":8,"level":"info","message":"confirm the location","timestamp":"2015-06-24T08:22:58.721Z"}
+{"location":8,"player":1,"group":1,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:58.727Z"}
+{"location":8,"player":2,"group":1,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:58.729Z"}
+{"location":8,"player":3,"group":1,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:22:58.731Z"}
+{"id":"agu_1_8_3_1","content":"Yjkkjhjkjhjk","location":8,"player":3,"level":"info","message":"add arguments","timestamp":"2015-06-24T08:23:11.169Z"}
+{"id":"agu_1_8_2_1","content":"Ujkbhgvghh","location":8,"player":2,"level":"info","message":"add arguments","timestamp":"2015-06-24T08:23:12.363Z"}
+{"id":"agu_1_8_1_1","content":"Hfjekfjfkdlfjcjfjrklel fjfieoofjfciekfjfjekfncnfkkfln     fkkelkfkfkemfkcj","location":8,"player":1,"level":"info","message":"add arguments","timestamp":"2015-06-24T08:23:42.834Z"}
+{"id":"agu_1_8_1_1","location":8,"player":1,"level":"info","message":"delete Agu","timestamp":"2015-06-24T08:23:50.653Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:33:43.748Z"}
+{"location":4,"player":3,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:33:50.971Z"}
+{"location":4,"player":1,"group":1,"aguflag":false,"level":"info","message":"choose the location","timestamp":"2015-06-24T08:33:52.264Z"}
+{"location":4,"group":1,"player":1,"value":"4","level":"info","message":"vote for location","timestamp":"2015-06-24T08:34:00.025Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:41:16.852Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:44:45.252Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:51:58.428Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:52:21.683Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:52:55.144Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:53:16.714Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:55:44.353Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:56:15.699Z"}
+{"group":1,"level":"info","message":"choose the group","timestamp":"2015-06-24T08:57:06.555Z"}

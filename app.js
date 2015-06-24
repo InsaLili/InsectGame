@@ -3,24 +3,29 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var filename = path.join(__dirname, 'debug1.log');
+var winston = require('winston');
+var logger = new (winston.Logger)({
+    transports: [
+        new (winston.transports.Console)({'timestamp':true}),
+        new (winston.transports.File)({ filename: filename })
+    ]
+});
 // Database
 var PouchDB = require('pouchdb');
-var db = new PouchDB('http://192.168.145.45:5984/locationlist');
+var db = new PouchDB('http://192.168.145.53:5984/insect');
+//var db = new PouchDB('http://192.168.1.49:8080/insect');
 
 var app = express();
 var routes = require('./routes/index');
-//var users = require('./routes/users');
 
 //set express environment
 app.engine('.html', require('ejs').__express);
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( {extended: false} ));
 app.use(cookieParser());
@@ -54,16 +59,6 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
-//app.use(function(err, req, res, next) {
-//    res.status(err.status || 500);
-//    res.render('error', {
-//        message: err.message,
-//        error: {}
-//    });
-//});
-
 //http server
 var httpserver = http.createServer(app);
 httpserver.listen(app.get('port'), function () {
@@ -72,61 +67,115 @@ httpserver.listen(app.get('port'), function () {
 
 //socket
 var io = require('socket.io')(httpserver);
-
 io.on('connection', function (socket) {
     socket.emit('news', {hello: 'world'});
 
     socket.on('choosegroup', function(data){
-        console.log(data);
+        logger.info('choose the group',data);
+        // logger.log('info',data);
         io.emit('choosegroup', data);
     });
     // Start listening for mouse events
     socket.on('chooselocation', function (data) {
-        console.log(data);
+        logger.info('choose the location',data);
 //        io.emit send message to all clients，socket.emit send message to particular client
         var numLocation = data.location-1;
         io.emit('chooselocation', data);
     });
 
     socket.on('confirmlocation', function(data){
-        console.log('choose the location');
-        console.log(data);
-       io.emit('confirmlocation',data);
+        logger.info('confirm the location',data);
+        io.emit('confirmlocation',data);
     });
-    socket.on('notes', function(data){
-        console.log(data);
-        io.emit('notes', data);
-    });
-
     socket.on('addnote', function(data){
+        logger.info('add note',data);
         io.emit('addnote', data);
     });
     socket.on('addagu', function(data){
-        console.log(data);
+        logger.info('add arguments',data);
         io.emit('addagu', data);
     });
     socket.on('deletenote', function(data){
+        logger.info('delete note',data);
         io.emit('deletenote', data);
     });
     socket.on('deleteagu', function(data){
-        console.log("deleteAgu");
-        console.log(data);
+        logger.info("delete Agu",data);
         io.emit('deleteagu', data);
     });
 
     socket.on('vote', function(data){
-        console.log(data);
+        logger.info('vote for location',data);
         io.emit('vote', data);
     });
 });
-
-/*db.allDocs({
-        include_docs: true,
-        attachements: true,
-        startkey: 'vote',
-        endkey: 'vote\uffff'
-    }).then(function(notes){
-        for(var i=0; i < notes.rows.length; i++){
-            db.remove(notes.rows[i].doc);
-        }
-    });*/
+db.allDocs({
+    include_docs: true,
+    attachements: true,
+    startkey: 'vote',
+    endkey: 'vote\uffff'
+}).then(function(notes){
+    for(var i=0; i < notes.rows.length; i++){
+        db.remove(notes.rows[i].doc);
+    }
+});
+//db.allDocs({
+//    include_docs: true,
+//    attachements: true,
+//    startkey: 'note',
+//    endkey: 'note\uffff'
+//}).then(function(notes){
+//    for(var i=0; i < notes.rows.length; i++){
+//        db.remove(notes.rows[i].doc);
+//    }
+//});
+//db.allDocs({
+//    include_docs: true,
+//    attachements: true,
+//    startkey: 'vote',
+//    endkey: 'vote\uffff'
+//}).then(function(notes){
+//    for(var i=0; i < notes.rows.length; i++){
+//        db.remove(notes.rows[i].doc);
+//    }
+//});
+//db.allDocs({
+//    include_docs: true,
+//    attachements: true,
+//    startkey: 'measure',
+//    endkey: 'measure/4\uffff'
+//}).then(function(locationData){
+//    var locationNum = 1;
+//    var light=0;
+//    var wind=0;
+//    var tem=0;
+//    var ph=0;
+//    for(var i = 0; i < locationData.rows.length; i++){
+//        var number = locationData.rows[i].doc.location;
+//        if(number == locationNum){
+//            var oneLocationData = locationData.rows[i].doc;
+//            light += parseFloat(oneLocationData.Light);
+//            wind += parseFloat(oneLocationData.Wind);
+//            tem += parseFloat(oneLocationData.Temperature);
+//            ph += parseFloat(oneLocationData.PH);
+//            console.log(light);
+//        }
+//    }
+//    light  = light/4;
+//    light = Math.round(light)+'Lux';
+//    wind = (wind/4).toFixed(1)+'km/h';
+//    tem = (tem/4).toFixed(1)+'°C';
+//    ph = (ph/4).toFixed(1)+'mg/L';
+//    db.get('measure/5/'+locationNum).then(function(doc) {
+//        console.log('average');
+//        console.log(light);
+//        return db.put({
+//            group: 5,
+//            location: locationNum,
+//            Light: light,
+//            Wind: wind,
+//            Temperature: tem,
+//            PH: ph
+//        }, 'measure/5/'+locationNum, doc._rev);
+//    });
+//});
