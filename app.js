@@ -16,7 +16,7 @@ var logger = new (winston.Logger)({
 // Database
 var PouchDB = require('pouchdb');
 var db = new PouchDB('http://192.168.145.53:5984/insect');
-//var db = new PouchDB('http://192.168.1.49:8080/insect');
+// var db = new PouchDB('http://localhost:8080/insect');
 
 var app = express();
 var routes = require('./routes/index');
@@ -109,73 +109,3 @@ io.on('connection', function (socket) {
         io.emit('vote', data);
     });
 });
-db.allDocs({
-    include_docs: true,
-    attachements: true,
-    startkey: 'vote',
-    endkey: 'vote\uffff'
-}).then(function(notes){
-    for(var i=0; i < notes.rows.length; i++){
-        db.remove(notes.rows[i].doc);
-    }
-});
-//db.allDocs({
-//    include_docs: true,
-//    attachements: true,
-//    startkey: 'note',
-//    endkey: 'note\uffff'
-//}).then(function(notes){
-//    for(var i=0; i < notes.rows.length; i++){
-//        db.remove(notes.rows[i].doc);
-//    }
-//});
-//db.allDocs({
-//    include_docs: true,
-//    attachements: true,
-//    startkey: 'vote',
-//    endkey: 'vote\uffff'
-//}).then(function(notes){
-//    for(var i=0; i < notes.rows.length; i++){
-//        db.remove(notes.rows[i].doc);
-//    }
-//});
-//db.allDocs({
-//    include_docs: true,
-//    attachements: true,
-//    startkey: 'measure',
-//    endkey: 'measure/4\uffff'
-//}).then(function(locationData){
-//    var locationNum = 1;
-//    var light=0;
-//    var wind=0;
-//    var tem=0;
-//    var ph=0;
-//    for(var i = 0; i < locationData.rows.length; i++){
-//        var number = locationData.rows[i].doc.location;
-//        if(number == locationNum){
-//            var oneLocationData = locationData.rows[i].doc;
-//            light += parseFloat(oneLocationData.Light);
-//            wind += parseFloat(oneLocationData.Wind);
-//            tem += parseFloat(oneLocationData.Temperature);
-//            ph += parseFloat(oneLocationData.PH);
-//            console.log(light);
-//        }
-//    }
-//    light  = light/4;
-//    light = Math.round(light)+'Lux';
-//    wind = (wind/4).toFixed(1)+'km/h';
-//    tem = (tem/4).toFixed(1)+'°C';
-//    ph = (ph/4).toFixed(1)+'mg/L';
-//    db.get('measure/5/'+locationNum).then(function(doc) {
-//        console.log('average');
-//        console.log(light);
-//        return db.put({
-//            group: 5,
-//            location: locationNum,
-//            Light: light,
-//            Wind: wind,
-//            Temperature: tem,
-//            PH: ph
-//        }, 'measure/5/'+locationNum, doc._rev);
-//    });
-//});

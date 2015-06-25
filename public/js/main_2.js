@@ -17,7 +17,7 @@ $(document).ready(function() {
     });
 
 //-------------------set insect information dialog
-    var insectShow = false;
+    var insectShow = false, energyShow = false;
     $('#insectBtn').on('click', function(){
         if(insectShow == false){
             $('#insectImg').show();

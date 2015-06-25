@@ -15,12 +15,16 @@ var group4 = [];
 var allData = [];
 //flag of how many groups update data
 var allGroupNum = [0,0,0,0];
+// var db = new PouchDB('http://localhost:5984/insect');
 var db = new PouchDB('http://localhost:5984/insect');
-//var db = new PouchDB('http://localhost:8080/insect');
 
 /* GET home page. */
 router.get('/', function(req, res) {
     res.render('index', { title: 'Map' });
+});
+
+router.get('/lycee', function(req, res) {
+    res.render('lycee', { title: 'Map' });
 });
 
 router.get('/player1', function(req, res){

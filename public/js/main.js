@@ -3,8 +3,8 @@
  */
 var db = new PouchDB('http://192.168.145.53:5984/insect');
 var socket = io.connect('http://192.168.145.53:8000');
-//var db = new PouchDB('http://192.168.1.49:8080/insect');
-//var socket = io.connect('http://192.168.1.49:8000');
+// var db = new PouchDB('http://localhost:8080/insect');
+// var socket = io.connect('http://localhost:8000');
 
 var groupNumber = 0;
 var allRating = 0;
@@ -15,16 +15,6 @@ $(document).ready(function() {
     $(document).on('contextmenu', function() {
         return false;
     });
-//db.allDocs({
-//    include_docs: true,
-//    attachements: true,
-//    startkey: 'agu',
-//    endkey: 'agu\uffff'
-//}).then(function(notes){
-//    for(var i=0; i < notes.rows.length; i++){
-//        db.remove(notes.rows[i].doc);
-//    }
-//});
 
 //-------------------set insect information dialog
     var insectShow = false, energyShow = false;

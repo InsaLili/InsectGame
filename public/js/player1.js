@@ -6,8 +6,8 @@ var allNotes = 0;
 
 var db = new PouchDB('http://192.168.145.53:5984/insect');
 var socket = io.connect('http://192.168.145.53:8000');
-//var db = new PouchDB('http://192.168.1.49:8080/insect');
-//var socket = io.connect('http://192.168.1.49:8000');
+// var db = new PouchDB('http://localhost:8080/insect');
+// var socket = io.connect('http://localhost:8000');
 // DOM Ready =============================================================
 $(document).ready(function($){
     //------------------hide arguments part
